@@ -1,0 +1,31 @@
+{
+  "name": "bitlane/wordpress",
+  "description": "Bitlane search for WordPress and WooCommerce: your catalogue, pages and posts in sync with Bitlane, and its search widget on your site.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://bitlane.co/integrations/wordpress",
+  "keywords": [
+    "wordpress",
+    "woocommerce",
+    "search",
+    "meilisearch",
+    "bitlane"
+  ],
+  "authors": [
+    {
+      "name": "Bitlane",
+      "homepage": "https://bitlane.co"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/bitlane-co/wordpress/issues",
+    "source": "https://github.com/bitlane-co/wordpress"
+  },
+  "require": {
+    "php": ">=8.2",
+    "composer/installers": "^2.0"
+  },
+  "extra": {
+    "installer-name": "bitlane"
+  }
+}

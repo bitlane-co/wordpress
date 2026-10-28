@@ -1,0 +1,529 @@
+# Copyright (C) 2026 Bitlane
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Bitlane Search 0.0.0-dev\n"
+"Report-Msgid-Bugs-To: https://bitlane.co\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-27T11:40:51+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: bitlane\n"
+
+#. Plugin Name of the plugin
+#: bitlane.php
+msgid "Bitlane Search"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: bitlane.php
+msgid "https://bitlane.co"
+msgstr ""
+
+#. Description of the plugin
+#: bitlane.php
+msgid "Fast search for WordPress and WooCommerce: connect to Bitlane, sync your products and posts, and add the search widget."
+msgstr ""
+
+#. Author of the plugin
+#: bitlane.php
+#: src/Admin/AdminPage.php:56
+#: src/Admin/AdminPage.php:57
+#: build/index.js:12
+msgid "Bitlane"
+msgstr ""
+
+#: src/Admin/AdminPage.php:106
+msgid "Connected to Bitlane."
+msgstr ""
+
+#: src/Admin/AdminPage.php:168
+msgid "Bitlane ended this site's connection, so its search stopped updating."
+msgstr ""
+
+#: src/Admin/AdminPage.php:170
+msgid "Connect again"
+msgstr ""
+
+#: src/Admin/AdminPage.php:183
+msgid "Settings"
+msgstr ""
+
+#: src/Connection/BitlaneApi.php:57
+msgid "Bitlane ended this site's connection. Connect again to keep searching."
+msgstr ""
+
+#: src/Connection/BitlaneApi.php:66
+msgid "Bitlane could not do that. Try again in a moment."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:71
+#: build/index.js:12
+msgid "Bitlane could not be reached. Try again in a moment."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:146
+msgid "The connection request expired or came from elsewhere. Click Connect again."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:152
+msgid "The connection was declined in Bitlane."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:156
+msgid "The answer did not come from Bitlane."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:159
+msgid "Bitlane sent no authorization code."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:184
+#: src/Connection/OAuthClient.php:204
+#: src/Sync/Credentials.php:87
+msgid "This site isn't connected to Bitlane."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:264
+msgid "Bitlane does not accept new connections right now."
+msgstr ""
+
+#. translators: %s: the site's host.
+#: src/Connection/OAuthClient.php:277
+#, php-format
+msgid "Bitlane for WordPress (%s)"
+msgstr ""
+
+#: src/Connection/OAuthClient.php:288
+msgid "Bitlane refused to register this site."
+msgstr ""
+
+#: src/Connection/OAuthClient.php:325
+msgid "Bitlane refused the connection."
+msgstr ""
+
+#: src/Http/ConnectionController.php:472
+msgid "Connect the site to Bitlane first."
+msgstr ""
+
+#: src/Http/ConnectionController.php:489
+msgid "Choose at least one kind of content to search."
+msgstr ""
+
+#: src/Site/Site.php:198
+msgid "Relevance"
+msgstr ""
+
+#: src/Site/Site.php:202
+msgid "Newest"
+msgstr ""
+
+#: src/Site/Site.php:206
+msgid "Oldest"
+msgstr ""
+
+#: src/Site/Site.php:210
+msgid "Name: A to Z"
+msgstr ""
+
+#: src/Site/Site.php:220
+msgid "Price: low to high"
+msgstr ""
+
+#: src/Site/Site.php:224
+msgid "Price: high to low"
+msgstr ""
+
+#: src/Site/Site.php:228
+msgid "Best selling"
+msgstr ""
+
+#: src/Site/Site.php:232
+msgid "Top rated"
+msgstr ""
+
+#: src/Sources/ProductSource.php:52
+msgid "Products"
+msgstr ""
+
+#: src/Sources/ProductSource.php:80
+msgid "Price"
+msgstr ""
+
+#: src/Sources/ProductSource.php:81
+msgid "Availability"
+msgstr ""
+
+#: build/index.js:1
+msgid "Bitlane ended this site’s connection, so its search stopped updating. Connect again to resume."
+msgstr ""
+
+#: build/index.js:1
+msgid "Connect your site to Bitlane"
+msgstr ""
+
+#: build/index.js:1
+msgid "You’ll sign in to Bitlane (or create an account) and allow this site to use it. Bitlane then sets up:"
+msgstr ""
+
+#: build/index.js:1
+msgid "an engine, or one your project already has"
+msgstr ""
+
+#. translators: %s: the site's languages, e.g. English, Italiano.
+#: build/index.js:2
+#, js-format
+msgid "indexes for your products and posts in %s"
+msgstr ""
+
+#: build/index.js:2
+msgid "a search widget for your storefront"
+msgstr ""
+
+#: build/index.js:2
+msgid "keys that only reach this site’s indexes"
+msgstr ""
+
+#: build/index.js:2
+msgid "Connect to Bitlane"
+msgstr ""
+
+#: build/index.js:2
+msgid "Choose a project"
+msgstr ""
+
+#: build/index.js:2
+msgid "Bitlane project for this site"
+msgstr ""
+
+#: build/index.js:2
+msgid "Continue"
+msgstr ""
+
+#: build/index.js:2
+msgid "Drag to change the order"
+msgstr ""
+
+#: build/index.js:2
+msgid "Bitlane could not set this site up."
+msgstr ""
+
+#: build/index.js:2
+msgid "Engine"
+msgstr ""
+
+#: build/index.js:2
+msgid "A new engine, or one your Bitlane project already has."
+msgstr ""
+
+#: build/index.js:2
+msgid "A new engine"
+msgstr ""
+
+#: build/index.js:2
+msgid "Saving moves the site to this engine: its indexes are made there and filled again, and the current engine’s are deleted. Search has fewer results until the sync is done."
+msgstr ""
+
+#: build/index.js:2
+msgid "Content to search"
+msgstr ""
+
+#: build/index.js:2
+msgid "Each kind gets its own index, kept up to date. Shoppers find those in the search widget in one list of results; the others are for your own use."
+msgstr ""
+
+#. translators: 1: a post type's name, 2: how many are published.
+#: build/index.js:3
+#, js-format
+msgid "%1$s (%2$d)"
+msgstr ""
+
+#: build/index.js:3
+msgid "In the search widget"
+msgstr ""
+
+#: build/index.js:3
+msgid "Languages"
+msgstr ""
+
+#. translators: %s: the multilingual plugin, e.g. WPML.
+#: build/index.js:4
+#, js-format
+msgid "Each language from %s gets its own indexes, and the widget searches the one of the page. A language you add later is added on its own."
+msgstr ""
+
+#: build/index.js:4
+msgid "Filters"
+msgstr ""
+
+#: build/index.js:4
+msgid "What shoppers can narrow the results by, in the order they show."
+msgstr ""
+
+#: build/index.js:4
+msgid "Sorting"
+msgstr ""
+
+#: build/index.js:4
+msgid "The choices shoppers can sort the results by, in the order they show. Change them later in Bitlane’s widget designer."
+msgstr ""
+
+#: build/index.js:4
+msgid "Products with variations"
+msgstr ""
+
+#: build/index.js:4
+msgid "One result per variation (recommended)"
+msgstr ""
+
+#: build/index.js:4
+msgid "Color, size and stock filter exactly: “red, XL, in stock” finds only products with a red XL in stock. Each variation counts as a record in your plan."
+msgstr ""
+
+#: build/index.js:4
+msgid "One result per product"
+msgstr ""
+
+#: build/index.js:4
+msgid "Fewer records, but filters combine variations: a red S and a blue XL match “red, XL”, and stock is the product’s."
+msgstr ""
+
+#: build/index.js:4
+msgid "Brand color"
+msgstr ""
+
+#: build/index.js:4
+msgid "The search widget’s buttons and highlights, from your theme. Bitlane uses it for a new widget; after that, change the colors in Bitlane."
+msgstr ""
+
+#: build/index.js:4
+msgid "Logo"
+msgstr ""
+
+#: build/index.js:4
+msgid "Shown at the top of the search widget’s filters, from your site. Bitlane uses it for a widget without a logo; after that, change it in Bitlane."
+msgstr ""
+
+#: build/index.js:4
+msgid "Choose a logo"
+msgstr ""
+
+#: build/index.js:4
+msgid "Use this logo"
+msgstr ""
+
+#: build/index.js:4
+msgid "Replace"
+msgstr ""
+
+#: build/index.js:4
+msgid "Remove"
+msgstr ""
+
+#: build/index.js:4
+msgid "Search box"
+msgstr ""
+
+#: build/index.js:4
+msgid "CSS selectors for your theme’s search field and button, separated by commas: clicking one opens Bitlane’s search."
+msgstr ""
+
+#: build/index.js:4
+msgid "Setting up"
+msgstr ""
+
+#: build/index.js:4
+msgid "Bitlane is creating the engine, indexes, keys and search widget. A new engine takes a minute or two."
+msgstr ""
+
+#: build/index.js:4
+msgid "Active"
+msgstr ""
+
+#: build/index.js:4
+msgid "Draft"
+msgstr ""
+
+#: build/index.js:4
+msgid "Running"
+msgstr ""
+
+#: build/index.js:4
+msgid "Starting"
+msgstr ""
+
+#: build/index.js:4
+msgid "Updating"
+msgstr ""
+
+#: build/index.js:4
+msgid "Moving"
+msgstr ""
+
+#: build/index.js:4
+msgid "Failed"
+msgstr ""
+
+#: build/index.js:4
+msgid "Deleting"
+msgstr ""
+
+#: build/index.js:4
+msgid "Stopped"
+msgstr ""
+
+#: build/index.js:4
+msgid "Engines"
+msgstr ""
+
+#: build/index.js:4
+msgid "Where your content is searched: an index per kind of content and language."
+msgstr ""
+
+#: build/index.js:4
+msgid "Open engine"
+msgstr ""
+
+#: build/index.js:4
+#: build/index.js:5
+msgid "Open"
+msgstr ""
+
+#: build/index.js:4
+msgid "No indexes yet."
+msgstr ""
+
+#: build/index.js:4
+msgid "Search widget"
+msgstr ""
+
+#: build/index.js:4
+msgid "The widget opens from your theme’s search box. Its look and texts are set in Bitlane."
+msgstr ""
+
+#. translators: 1: what the widget searches, e.g. Products, Posts; 2: its languages, e.g. English, Italiano.
+#: build/index.js:5
+#, js-format
+msgid "%1$s in %2$s"
+msgstr ""
+
+#: build/index.js:5
+msgid "Show on the storefront"
+msgstr ""
+
+#: build/index.js:5
+msgid "Off: the storefront keeps your theme’s own search."
+msgstr ""
+
+#: build/index.js:5
+msgid "Bitlane has no active widget for this site yet."
+msgstr ""
+
+#: build/index.js:5
+msgid "Content"
+msgstr ""
+
+#. translators: %s: the site's languages, e.g. English, Italiano.
+#: build/index.js:6
+#, js-format
+msgid "Each kind of content has its own index in each language (%s), kept up to date as it changes."
+msgstr ""
+
+#: build/index.js:6
+msgid "Each kind of content has its own index, kept up to date as it changes."
+msgstr ""
+
+#. translators: 1: the error, 2: when it happened.
+#: build/index.js:7
+#, js-format
+msgid "Last error: %1$s (%2$s)"
+msgstr ""
+
+#. translators: 1: a language, e.g. Italiano, 2: items synced, 3: items in all.
+#: build/index.js:8
+#, js-format
+msgid "Syncing %1$s: %2$s of %3$s"
+msgstr ""
+
+#. translators: 1: items synced, 2: items in all.
+#: build/index.js:9
+#, js-format
+msgid "Syncing: %1$s of %2$s"
+msgstr ""
+
+#. translators: %s: when.
+#: build/index.js:10
+#, js-format
+msgid "Synced %s"
+msgstr ""
+
+#: build/index.js:10
+msgid "Not synced yet"
+msgstr ""
+
+#: build/index.js:10
+msgid "Not in the search widget"
+msgstr ""
+
+#: build/index.js:10
+msgid "Resync"
+msgstr ""
+
+#: build/index.js:10
+msgid "Resync all"
+msgstr ""
+
+#. translators: %s: how many.
+#: build/index.js:11
+#, js-format
+msgid "%s change waiting to sync"
+msgid_plural "%s changes waiting to sync"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/index.js:11
+msgid "Connected"
+msgstr ""
+
+#. translators: 1: the site's name, 2: its address.
+#: build/index.js:12
+#, js-format
+msgid "%1$s (%2$s) is connected to Bitlane."
+msgstr ""
+
+#: build/index.js:12
+msgid "Disconnect this site from Bitlane? Its search stops updating; the engine and indexes stay in Bitlane."
+msgstr ""
+
+#: build/index.js:12
+msgid "Disconnect"
+msgstr ""
+
+#: build/index.js:12
+msgid "Save"
+msgstr ""
+
+#: build/index.js:12
+msgid "Save and set up"
+msgstr ""
+
+#: build/index.js:12
+msgid "Overview"
+msgstr ""
+
+#: build/index.js:12
+msgid "Search"
+msgstr ""
+
+#: build/index.js:12
+msgid "Connection"
+msgstr ""
+
+#: build/index.js:12
+msgid "Open in Bitlane"
+msgstr ""
