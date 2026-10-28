@@ -264,7 +264,8 @@ final class OAuthClient {
 			return new WP_Error( 'bitlane_register', __( 'Bitlane does not accept new connections right now.', 'bitlane' ) );
 		}
 
-		$res = $this->http->request(
+		$home = home_url();
+		$res  = $this->http->request(
 			'POST',
 			(string) $metadata['registration_endpoint'],
 			array(
@@ -274,8 +275,9 @@ final class OAuthClient {
 					'grant_types'                => array( 'authorization_code', 'refresh_token' ),
 					'response_types'             => array( 'code' ),
 					/* translators: %s: the site's host. */
-					'client_name'                => sprintf( __( 'Bitlane for WordPress (%s)', 'bitlane' ), (string) wp_parse_url( home_url(), PHP_URL_HOST ) ),
-					'client_uri'                 => home_url(),
+					'client_name'                => sprintf( __( 'Bitlane for WordPress (%s)', 'bitlane' ), (string) wp_parse_url( $home, PHP_URL_HOST ) ),
+					// Bitlane takes an https address only: a site without one registers without it.
+					'client_uri'                 => str_starts_with( $home, 'https://' ) ? $home : '',
 					'software_id'                => 'bitlane-wordpress',
 					'software_version'           => $this->version,
 				),

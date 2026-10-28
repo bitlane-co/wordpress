@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'bitlane/wordpress',
-        'pretty_version' => 'dev-31ec5cbf592c31c7f9c6a0063c808d7e9f424a0a',
-        'version' => 'dev-31ec5cbf592c31c7f9c6a0063c808d7e9f424a0a',
-        'reference' => '31ec5cbf592c31c7f9c6a0063c808d7e9f424a0a',
+        'pretty_version' => 'dev-c9a7909078b268fcd2eaa4cec76c5d1f53a6026a',
+        'version' => 'dev-c9a7909078b268fcd2eaa4cec76c5d1f53a6026a',
+        'reference' => 'c9a7909078b268fcd2eaa4cec76c5d1f53a6026a',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'bitlane/wordpress' => array(
-            'pretty_version' => 'dev-31ec5cbf592c31c7f9c6a0063c808d7e9f424a0a',
-            'version' => 'dev-31ec5cbf592c31c7f9c6a0063c808d7e9f424a0a',
-            'reference' => '31ec5cbf592c31c7f9c6a0063c808d7e9f424a0a',
+            'pretty_version' => 'dev-c9a7909078b268fcd2eaa4cec76c5d1f53a6026a',
+            'version' => 'dev-c9a7909078b268fcd2eaa4cec76c5d1f53a6026a',
+            'reference' => 'c9a7909078b268fcd2eaa4cec76c5d1f53a6026a',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
