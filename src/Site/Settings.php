@@ -7,6 +7,8 @@
 
 namespace Bitlane\WordPress\Site;
 
+use Bitlane\WordPress\Sources\Source;
+
 /**
  * What was set up, kept to show it again and for the sync: the engine, the
  * post types and taxonomies, the theme's search input, and product_documents,
@@ -35,6 +37,15 @@ final class Settings {
 	public const PRODUCT_DOCUMENTS = array( self::PER_PRODUCT, self::PER_VARIATION );
 
 	/**
+	 * A source's image size until the merchant picks one, by its kind:
+	 * WooCommerce's catalog size for products, medium for the rest.
+	 */
+	public const DEFAULT_IMAGE_SIZES = array(
+		Source::PRODUCTS => 'woocommerce_thumbnail',
+		Source::OTHER    => 'medium',
+	);
+
+	/**
 	 * Builds the settings.
 	 *
 	 * @param Site $site The site, for the defaults.
@@ -44,7 +55,7 @@ final class Settings {
 	/**
 	 * The settings, the defaults for what's not set, and the logo's address.
 	 *
-	 * @return array{engine_id: ?string, sources: list<string>, outside_widget: list<string>, facets: list<string>, sorting: array<string, list<string>>, search_selector: string, brand_color: string, logo_id: int, logo_url: string, product_documents: string, languages: list<string>}
+	 * @return array{engine_id: ?string, sources: list<string>, outside_widget: list<string>, facets: list<string>, sorting: array<string, list<string>>, search_selector: string, brand_color: string, logo_id: int, logo_url: string, product_documents: string, image_sizes: array<string, string>, languages: list<string>}
 	 */
 	public function get(): array {
 		$stored   = get_option( self::OPTION, array() );
@@ -57,6 +68,9 @@ final class Settings {
 				// without an entry has its kind's defaults.
 				'sorting'           => array(),
 				'product_documents' => self::PER_VARIATION,
+				// Each source's image size (Site::image_sizes()); a source without
+				// an entry has its kind's default.
+				'image_sizes'       => array(),
 				// The languages Bitlane was last sent.
 				'languages'         => array(),
 			),
@@ -81,14 +95,25 @@ final class Settings {
 	/**
 	 * What a source's documents depend on, as a short hash: a new one means
 	 * a full sync of the source. Its picked filters, the languages (a new
-	 * one has empty indexes), and for products how they become documents.
+	 * one has empty indexes), its image size, and for products how they
+	 * become documents.
 	 *
 	 * @param string $source The source's id.
 	 */
 	public function hash( string $source ): string {
 		$settings = $this->get();
 		$facets   = array_values( array_intersect( $settings['facets'], wp_list_pluck( $this->site->facets( array( $source ) ), 'attribute' ) ) );
-		return md5( (string) wp_json_encode( array( $source, $facets, $settings['languages'], 'product' === $source ? $settings['product_documents'] : null ) ) );
+		return md5( (string) wp_json_encode( array( $source, $facets, $settings['languages'], 'product' === $source ? $settings['product_documents'] : null, $this->image_size( $source ) ) ) );
+	}
+
+	/**
+	 * The image size of a source's cards: the one picked, else its kind's
+	 * default.
+	 *
+	 * @param string $source The source's id.
+	 */
+	public function image_size( string $source ): string {
+		return (string) ( $this->get()['image_sizes'][ $source ] ?? self::DEFAULT_IMAGE_SIZES[ $this->site->kind( $source ) ?? Source::OTHER ] );
 	}
 
 	/**

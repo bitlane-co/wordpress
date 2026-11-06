@@ -134,6 +134,71 @@ final class Site {
 	}
 
 	/**
+	 * A source's kind (products or other), null for one that isn't offered.
+	 *
+	 * @param string $source_id The source.
+	 */
+	public function kind( string $source_id ): ?string {
+		return $this->sources->get( $source_id )?->kind();
+	}
+
+	/**
+	 * The image sizes cards can show, smallest first, each named with its
+	 * dimensions in the admin's language, and the original upload last; and
+	 * each kind of source's default.
+	 *
+	 * @return array{choices: list<array{id: string, label: string}>, defaults: array<string, string>}
+	 */
+	public function image_sizes(): array {
+		$names = array(
+			'thumbnail'                     => __( 'Thumbnail', 'bitlane' ),
+			'medium'                        => __( 'Medium', 'bitlane' ),
+			'medium_large'                  => __( 'Medium large', 'bitlane' ),
+			'large'                         => __( 'Large', 'bitlane' ),
+			'woocommerce_gallery_thumbnail' => __( 'Product gallery thumbnail', 'bitlane' ),
+			'woocommerce_thumbnail'         => __( 'Shop catalog', 'bitlane' ),
+			'woocommerce_single'            => __( 'Single product', 'bitlane' ),
+			'full'                          => __( 'Original', 'bitlane' ),
+		);
+		/** This filter is documented in wp-admin/includes/media.php: themes name their sizes with it. */
+		$names = (array) apply_filters( 'image_size_names_choose', $names ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WordPress's own.
+
+		$subsizes = wp_get_registered_image_subsizes();
+		uasort( $subsizes, static fn( $a, $b ) => array( $a['width'], $a['height'] ) <=> array( $b['width'], $b['height'] ) );
+		$sizes = array();
+		foreach ( $subsizes as $id => $size ) {
+			$width  = (int) $size['width'];
+			$height = (int) $size['height'];
+			if ( $size['crop'] && $width && $height ) {
+				/* translators: 1: width, 2: height, in pixels. */
+				$dimensions = sprintf( __( '%1$d × %2$d px, cropped', 'bitlane' ), $width, $height );
+			} elseif ( ! $height ) {
+				/* translators: %d: width in pixels. */
+				$dimensions = sprintf( __( '%d px wide', 'bitlane' ), $width );
+			} elseif ( ! $width ) {
+				/* translators: %d: height in pixels. */
+				$dimensions = sprintf( __( '%d px high', 'bitlane' ), $height );
+			} else {
+				/* translators: 1: width, 2: height, in pixels. */
+				$dimensions = sprintf( __( 'up to %1$d × %2$d px', 'bitlane' ), $width, $height );
+			}
+			$sizes[] = array(
+				'id'    => (string) $id,
+				/* translators: 1: an image size's name, 2: its dimensions. */
+				'label' => sprintf( __( '%1$s (%2$s)', 'bitlane' ), (string) ( $names[ $id ] ?? $id ), $dimensions ),
+			);
+		}
+		$sizes[] = array(
+			'id'    => 'full',
+			'label' => (string) $names['full'],
+		);
+		return array(
+			'choices'  => $sizes,
+			'defaults' => Settings::DEFAULT_IMAGE_SIZES,
+		);
+	}
+
+	/**
 	 * The theme's colors (theme.json's palette) by slug, to pick the brand
 	 * color from.
 	 *

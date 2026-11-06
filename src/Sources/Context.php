@@ -9,7 +9,8 @@ namespace Bitlane\WordPress\Sources;
 
 /**
  * The setup the documents are for: the filters the merchant picked for the
- * source, how products become documents, and the language.
+ * source, how products become documents, the language, and the size of
+ * the cards' images.
  */
 final class Context {
 
@@ -19,10 +20,12 @@ final class Context {
 	 * @param string[] $facets            The picked filters (attributes) this source has.
 	 * @param string   $product_documents Settings::PER_VARIATION or PER_PRODUCT.
 	 * @param string   $language          The documents' language ("en-US").
+	 * @param string   $image_size        A registered image size, or "full".
 	 */
 	public function __construct(
 		public readonly array $facets,
 		public readonly string $product_documents,
 		public readonly string $language,
+		public readonly string $image_size,
 	) {}
 }

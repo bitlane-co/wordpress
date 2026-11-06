@@ -22,9 +22,10 @@ final class OtherDocument {
 	 *
 	 * @param WP_Post  $post       The post.
 	 * @param string[] $taxonomies The chosen filters its type has.
+	 * @param string   $image_size The image size picked for these cards.
 	 * @return array<string, mixed>|null
 	 */
-	public function build( WP_Post $post, array $taxonomies ): ?array {
+	public function build( WP_Post $post, array $taxonomies, string $image_size = 'medium' ): ?array {
 		if ( ! $this->searchable( $post ) ) {
 			return null;
 		}
@@ -51,10 +52,10 @@ final class OtherDocument {
 		/**
 		 * The image size of cards for posts, pages and other content.
 		 *
-		 * @param string   $size A registered size; by default medium.
+		 * @param string   $size A registered size; by default the one picked on the setup screen.
 		 * @param \WP_Post $post The post.
 		 */
-		$size = (string) apply_filters( 'bitlane_other_image_size', 'medium', $post );
+		$size = (string) apply_filters( 'bitlane_other_image_size', $image_size, $post );
 
 		$doc = array(
 			'id'                => (string) $post->ID,

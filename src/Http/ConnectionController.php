@@ -266,6 +266,11 @@ final class ConnectionController implements HasHooks {
 						'type' => 'string',
 						'enum' => Settings::PRODUCT_DOCUMENTS,
 					),
+					// Source => its cards' image size.
+					'image_sizes'       => array(
+						'type'                 => 'object',
+						'additionalProperties' => array( 'type' => 'string' ),
+					),
 				),
 			)
 		);
@@ -333,6 +338,7 @@ final class ConnectionController implements HasHooks {
 					'sources'      => $sources,
 					'facets'       => $this->site->facets( wp_list_pluck( $sources, 'id' ) ),
 					'sorting'      => $this->site->sorting(),
+					'image_sizes'  => $this->site->image_sizes(),
 					'palette'      => array_values( $this->site->palette() ),
 				),
 				'settings'      => $this->settings->get(),
@@ -484,6 +490,12 @@ final class ConnectionController implements HasHooks {
 		$logo_id   = absint( $request['logo_id'] ?? 0 );
 		$logo_url  = Settings::logo_url( $logo_id );
 		$documents = (string) ( $request['product_documents'] ?? Settings::PER_VARIATION );
+		$offered   = wp_list_pluck( $this->site->image_sizes()['choices'], 'id' );
+		$asked     = (array) ( $request['image_sizes'] ?? array() );
+		$sizes     = array();
+		foreach ( $sources as $source ) {
+			$sizes[ $source ] = in_array( $asked[ $source ] ?? null, $offered, true ) ? (string) $asked[ $source ] : Settings::DEFAULT_IMAGE_SIZES[ $kinds[ $source ] ];
+		}
 
 		if ( ! $sources ) {
 			return new WP_Error( 'bitlane_no_sources', __( 'Choose at least one kind of content to search.', 'bitlane' ), array( 'status' => 400 ) );
@@ -548,6 +560,7 @@ final class ConnectionController implements HasHooks {
 				'brand_color'       => $color,
 				'logo_id'           => '' !== $logo_url ? $logo_id : 0,
 				'product_documents' => $documents,
+				'image_sizes'       => $sizes,
 				'languages'         => $languages,
 			)
 		);

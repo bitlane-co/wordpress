@@ -101,7 +101,7 @@ final class PostTypeSource implements Source {
 		$docs     = array();
 		foreach ( $ids as $id ) {
 			$post        = get_post( (int) $id );
-			$doc         = $post && $post->post_type === $this->type->name && $this->languages->has_post( $post->ID, $context->language ) ? $this->builder->build( $post, $context->facets ) : null;
+			$doc         = $post && $post->post_type === $this->type->name && $this->languages->has_post( $post->ID, $context->language ) ? $this->builder->build( $post, $context->facets, $context->image_size ) : null;
 			$docs[ $id ] = $doc ? array( array_merge( $doc, array( 'modified_at' => $modified[ (string) $id ] ?? 0 ) ) ) : array();
 		}
 		return $docs;

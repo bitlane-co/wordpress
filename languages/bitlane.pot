@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-27T11:40:51+00:00\n"
+"POT-Creation-Date: 2026-11-06T13:28:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bitlane\n"
@@ -94,56 +94,118 @@ msgid "Bitlane does not accept new connections right now."
 msgstr ""
 
 #. translators: %s: the site's host.
-#: src/Connection/OAuthClient.php:277
+#: src/Connection/OAuthClient.php:278
 #, php-format
 msgid "Bitlane for WordPress (%s)"
 msgstr ""
 
-#: src/Connection/OAuthClient.php:288
+#: src/Connection/OAuthClient.php:290
 msgid "Bitlane refused to register this site."
 msgstr ""
 
-#: src/Connection/OAuthClient.php:325
+#: src/Connection/OAuthClient.php:327
 msgid "Bitlane refused the connection."
 msgstr ""
 
-#: src/Http/ConnectionController.php:472
+#: src/Http/ConnectionController.php:478
 msgid "Connect the site to Bitlane first."
 msgstr ""
 
-#: src/Http/ConnectionController.php:489
+#: src/Http/ConnectionController.php:501
 msgid "Choose at least one kind of content to search."
 msgstr ""
 
-#: src/Site/Site.php:198
+#: src/Site/Site.php:154
+msgid "Thumbnail"
+msgstr ""
+
+#: src/Site/Site.php:155
+msgid "Medium"
+msgstr ""
+
+#: src/Site/Site.php:156
+msgid "Medium large"
+msgstr ""
+
+#: src/Site/Site.php:157
+msgid "Large"
+msgstr ""
+
+#: src/Site/Site.php:158
+msgid "Product gallery thumbnail"
+msgstr ""
+
+#: src/Site/Site.php:159
+msgid "Shop catalog"
+msgstr ""
+
+#: src/Site/Site.php:160
+msgid "Single product"
+msgstr ""
+
+#: src/Site/Site.php:161
+msgid "Original"
+msgstr ""
+
+#. translators: 1: width, 2: height, in pixels.
+#: src/Site/Site.php:174
+#, php-format
+msgid "%1$d × %2$d px, cropped"
+msgstr ""
+
+#. translators: %d: width in pixels.
+#: src/Site/Site.php:177
+#, php-format
+msgid "%d px wide"
+msgstr ""
+
+#. translators: %d: height in pixels.
+#: src/Site/Site.php:180
+#, php-format
+msgid "%d px high"
+msgstr ""
+
+#. translators: 1: width, 2: height, in pixels.
+#: src/Site/Site.php:183
+#, php-format
+msgid "up to %1$d × %2$d px"
+msgstr ""
+
+#. translators: 1: an image size's name, 2: its dimensions.
+#: src/Site/Site.php:188
+#, php-format
+msgid "%1$s (%2$s)"
+msgstr ""
+
+#: src/Site/Site.php:263
 msgid "Relevance"
 msgstr ""
 
-#: src/Site/Site.php:202
+#: src/Site/Site.php:267
 msgid "Newest"
 msgstr ""
 
-#: src/Site/Site.php:206
+#: src/Site/Site.php:271
 msgid "Oldest"
 msgstr ""
 
-#: src/Site/Site.php:210
+#: src/Site/Site.php:275
 msgid "Name: A to Z"
 msgstr ""
 
-#: src/Site/Site.php:220
+#: src/Site/Site.php:285
 msgid "Price: low to high"
 msgstr ""
 
-#: src/Site/Site.php:224
+#: src/Site/Site.php:289
 msgid "Price: high to low"
 msgstr ""
 
-#: src/Site/Site.php:228
+#: src/Site/Site.php:293
 msgid "Best selling"
 msgstr ""
 
-#: src/Site/Site.php:232
+#: src/Site/Site.php:297
 msgid "Top rated"
 msgstr ""
 
@@ -291,6 +353,14 @@ msgstr ""
 
 #: build/index.js:4
 msgid "Fewer records, but filters combine variations: a red S and a blue XL match “red, XL”, and stock is the product’s."
+msgstr ""
+
+#: build/index.js:4
+msgid "Images"
+msgstr ""
+
+#: build/index.js:4
+msgid "The size of the pictures in the search widget’s results, from those your site makes: a larger one is sharper and slower to load. Saving another syncs that content again."
 msgstr ""
 
 #: build/index.js:4

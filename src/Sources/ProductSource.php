@@ -109,7 +109,7 @@ final class ProductSource implements Source {
 		foreach ( $ids as $id ) {
 			$product     = wc_get_product( (int) $id );
 			$docs[ $id ] = $product instanceof WC_Product && ! $product->is_type( 'variation' ) && $this->languages->has_post( $product->get_id(), $context->language )
-				? $this->builder->build( $product, $taxonomies, $context->product_documents )
+				? $this->builder->build( $product, $taxonomies, $context->product_documents, $context->image_size )
 				: array();
 			foreach ( $docs[ $id ] as $i => $doc ) {
 				$docs[ $id ][ $i ]['modified_at'] = $modified[ (string) $id ] ?? 0;

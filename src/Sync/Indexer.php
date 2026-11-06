@@ -66,12 +66,13 @@ final class Indexer {
 
 		$ids    = array_values( array_unique( array_map( 'strval', $ids ) ) );
 		$facets = array_values( array_intersect( $settings['facets'], array_keys( $source->facets() ) ) );
+		$size   = $this->settings->image_size( $source_id );
 		foreach ( '' !== $language ? array( $language ) : $this->languages->codes() as $code ) {
 			$index = $this->credentials->index( $source_id, $code );
 			if ( is_wp_error( $index ) && '' === $language && 'bitlane_no_index' === $index->get_error_code() ) {
 				continue;
 			}
-			$sent = is_wp_error( $index ) ? $index : $this->write( $source, $index, $ids, new Context( $facets, $settings['product_documents'], $code ), $run, $full );
+			$sent = is_wp_error( $index ) ? $index : $this->write( $source, $index, $ids, new Context( $facets, $settings['product_documents'], $code, $size ), $run, $full );
 			if ( is_wp_error( $sent ) ) {
 				$status = (int) ( $sent->get_error_data()['status'] ?? 0 );
 				// The write key may have been replaced: the next try reads it again.

@@ -34,12 +34,21 @@ final class ProductDocuments {
 	 * @param WC_Product $product    The product (not a variation).
 	 * @param string[]   $taxonomies The chosen filters that products have.
 	 * @param string     $mode       Settings::PER_VARIATION or PER_PRODUCT.
+	 * @param string     $image_size The image size picked for product cards.
 	 * @return list<array<string, mixed>>
 	 */
-	public function build( WC_Product $product, array $taxonomies, string $mode ): array {
+	public function build( WC_Product $product, array $taxonomies, string $mode, string $image_size = 'woocommerce_thumbnail' ): array {
 		if ( ! $this->searchable( $product ) ) {
 			return array();
 		}
+
+		/**
+		 * The image size of product cards.
+		 *
+		 * @param string      $size    A registered size; by default the one picked on the setup screen.
+		 * @param \WC_Product $product The product.
+		 */
+		$size = (string) apply_filters( 'bitlane_product_image_size', $image_size, $product );
 
 		// The stock status is a filter of Bitlane's, not a taxonomy.
 		$status     = in_array( self::STOCK_STATUS, $taxonomies, true );
@@ -59,7 +68,7 @@ final class ProductDocuments {
 				Fields::terms( $product->get_id(), array_intersect( $taxonomies, $variation_attributes ) ),
 				$status ? $this->stock_status( $product ) : array()
 			);
-			$docs   = array( $this->document( $product, $product, $facets, $facets, $product->is_in_stock() ? $facets : array() ) );
+			$docs   = array( $this->document( $product, $product, $facets, $facets, $product->is_in_stock() ? $facets : array(), $size ) );
 			return $this->filtered( $docs, $product );
 		}
 
@@ -79,13 +88,13 @@ final class ProductDocuments {
 
 		if ( Settings::PER_PRODUCT === $mode ) {
 			$available = $in_stock ? Fields::merge( $own, ...array_map( static fn( $v ) => $choices[ $v->get_id() ], array_values( $in_stock ) ) ) : array();
-			return $this->filtered( array( $this->document( $product, $product, $all, $all, $available, $variations ) ), $product );
+			return $this->filtered( array( $this->document( $product, $product, $all, $all, $available, $size, $variations ) ), $product );
 		}
 
 		$docs = array();
 		foreach ( $variations as $variation ) {
 			$facets = Fields::merge( $own, $choices[ $variation->get_id() ] );
-			$docs[] = $this->document( $product, $variation, $facets, $all, $variation->is_in_stock() ? $facets : array() );
+			$docs[] = $this->document( $product, $variation, $facets, $all, $variation->is_in_stock() ? $facets : array(), $size );
 		}
 		return $this->filtered( $docs, $product );
 	}
@@ -180,22 +189,15 @@ final class ProductDocuments {
 	 * @param array<string, list<string>> $facets     The document's values.
 	 * @param array<string, list<string>> $all        The whole product's values.
 	 * @param array<string, list<string>> $available  Its values when in stock (a whole product: its own and its in-stock variations'), else none.
+	 * @param string                      $size       The image size.
 	 * @param WC_Product_Variation[]      $variations For a whole variable product: its variations.
 	 * @return array<string, mixed>|null
 	 */
-	private function document( WC_Product $product, WC_Product $item, array $facets, array $all, array $available, array $variations = array() ): ?array {
+	private function document( WC_Product $product, WC_Product $item, array $facets, array $all, array $available, string $size, array $variations = array() ): ?array {
 		$priced       = $variations ? $variations : array( $item );
 		$prices       = array_map( static fn( $p ) => Fields::minor( wc_get_price_to_display( $p ) ), $priced );
 		$regular      = array_map( static fn( $p ) => Fields::minor( wc_get_price_to_display( $p, array( 'price' => $p->get_regular_price() ) ) ), $priced );
 		$is_variation = $item instanceof WC_Product_Variation;
-
-		/**
-		 * The image size of product cards.
-		 *
-		 * @param string      $size    A registered size; by default WooCommerce's thumbnail.
-		 * @param \WC_Product $product The product.
-		 */
-		$size = (string) apply_filters( 'bitlane_product_image_size', 'woocommerce_thumbnail', $product );
 
 		$doc = array(
 			'id'                => (string) $item->get_id(),
