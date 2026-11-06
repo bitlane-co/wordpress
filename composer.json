@@ -1,5 +1,5 @@
 {
-  "version": "0.6.0",
+  "version": "0.6.1",
   "name": "bitlane/wordpress",
   "description": "Bitlane search for WordPress and WooCommerce: your catalogue, pages and posts in sync with Bitlane, and its search widget on your site.",
   "type": "wordpress-plugin",

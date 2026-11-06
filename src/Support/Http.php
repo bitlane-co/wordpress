@@ -38,10 +38,12 @@ final class Http {
 		$response = wp_remote_request(
 			$url,
 			array(
-				'method'  => $method,
-				'headers' => $headers,
-				'body'    => $body,
-				'timeout' => 20,
+				'method'     => $method,
+				'headers'    => $headers,
+				'body'       => $body,
+				'timeout'    => 20,
+				// The same shape in every integration, for Bitlane's audit log.
+				'user-agent' => sprintf( 'Bitlane-WordPress/%s (WordPress/%s; PHP/%s; +%s)', BITLANE_VERSION, get_bloginfo( 'version' ), PHP_VERSION, home_url() ),
 			)
 		);
 		if ( is_wp_error( $response ) ) {
